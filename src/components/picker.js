@@ -55,7 +55,6 @@ function Picker({ emojis }) {
           <button
             onClick={handleButtonClick}
             data-emojicat={x}
-            role="tab"
             aria-label={x}
             title={x}
             aria-selected={category === x}
@@ -84,8 +83,7 @@ export default function () {
           <Picker
             emojis={emojis.reduce((emoji, curr) => {
               const cat = curr.category;
-              supportsEmoji(curr.emoji) &&
-                (emoji[cat] || (emoji[cat] = [])).push({
+              (emoji[cat] || (emoji[cat] = [])).push({
                   emoji: curr.emoji,
                   searchBy: clean(
                     Array.from(

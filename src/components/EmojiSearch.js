@@ -16,7 +16,6 @@ export function EmojiSearch({ onInput }) {
         value={value}
         onInput={setInput}
         type="search"
-        role="combobox"
         enterkeyhint="search"
         autocapitalize="none"
         autocomplete="off"
