@@ -57,7 +57,6 @@ function Picker({ emojis }) {
             data-emojicat={x}
             aria-label={x}
             title={x}
-            aria-selected={category === x}
             class={
               "hoverable emoji-category-select" +
               (category === x ? " selected" : "")
