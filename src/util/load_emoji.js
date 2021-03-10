@@ -1,19 +1,24 @@
-import { get, set } from "../storage/idb";
+import { clear, get, set } from "../storage/idb";
 const KEY = "__emoji___cache";
-
+const currVersion = "1.1";
 /** @returns {Promise<Array<{
     emoji: string;
     description: string;
     category: string;
     tags: string[];
     }>> */
-export function loadEmojis() {
+
+export async function loadEmojis() {
+  if ((await get("version")) != currVersion) {
+    await clear();
+  }
   return get(KEY).then((data) => {
     if (data != null) {
       return data;
     }
     return import("../data/emoji.json").then(({ default: emojis }) => {
       set(KEY, emojis);
+      set("version", currVersion);
       return emojis;
     });
   });

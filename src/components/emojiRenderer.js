@@ -26,6 +26,7 @@ export function emojiRenderer(emojiData) {
       class="emoji-result hoverable"
       aria-label={em}
       onClick={copy}
+      title={emojiData.title}
     >
       {em}
     </button>

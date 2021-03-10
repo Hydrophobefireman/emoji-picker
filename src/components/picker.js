@@ -18,6 +18,7 @@ const req = window.requestAnimationFrame || ((e) => setTimeout(e, 16));
  * @param {{emojis:Record<string,Array<{
     emoji: string;
     searchBy: string;
+    title:string;
 
 }>>}} param0
  */
@@ -83,15 +84,16 @@ export default function () {
             emojis={emojis.reduce((emoji, curr) => {
               const cat = curr.category;
               (emoji[cat] || (emoji[cat] = [])).push({
-                  emoji: curr.emoji,
-                  searchBy: clean(
-                    Array.from(
-                      new FakeSet(
-                        [].concat(curr.description.split(" "), curr.tags)
-                      )
-                    ).join("")
-                  ),
-                });
+                emoji: curr.emoji,
+                title: curr.description,
+                searchBy: clean(
+                  Array.from(
+                    new FakeSet(
+                      [].concat(curr.description.split(" "), curr.tags)
+                    )
+                  ).join("")
+                ),
+              });
               return emoji;
             }, {})}
           />
