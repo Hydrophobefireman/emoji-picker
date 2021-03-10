@@ -14,7 +14,7 @@ def get_emojis():
 def generate():
     ret = []
     for i in get_emojis():
-        if i["group"].lower() == "component":
+        if i["group"].lower() == "component" or 'skin tone' in i['name'].lower():
             continue
         obj = {}
         obj["emoji"] = i["char"]

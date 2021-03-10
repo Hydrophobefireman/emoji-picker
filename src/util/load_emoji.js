@@ -1,6 +1,6 @@
 import { clear, get, set } from "../storage/idb";
 const KEY = "__emoji___cache";
-const currVersion = "1.1";
+const currVersion = "1.2";
 /** @returns {Promise<Array<{
     emoji: string;
     description: string;
