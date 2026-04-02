@@ -1,6 +1,8 @@
-import { render } from "@hydrophobefireman/ui-lib";
-import Picker from "./components/picker";
 import "./App.css";
+
+import {render} from "@hydrophobefireman/ui-lib";
+
+import Picker from "./components/picker";
 
 function App() {
   return (

@@ -1,6 +1,6 @@
-import { clear, get, set } from "../storage/idb";
+import {clear, get, set} from "../storage/idb";
 const KEY = "__emoji___cache";
-const currVersion = "1.2";
+const currVersion = "1.3";
 /** @returns {Promise<Array<{
     emoji: string;
     description: string;
@@ -16,7 +16,7 @@ export async function loadEmojis() {
     if (data != null) {
       return data;
     }
-    return import("../data/emoji.json").then(({ default: emojis }) => {
+    return import("../data/emoji.json").then(({default: emojis}) => {
       set(KEY, emojis);
       set("version", currVersion);
       return emojis;

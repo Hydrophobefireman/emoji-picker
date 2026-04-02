@@ -1,17 +1,17 @@
+import {FakeSet, Object_keys as keys} from "@hydrophobefireman/j-utils";
 import {
   AsyncComponent,
-  useState,
   useCallback,
   useEffect,
   useMemo,
+  useState,
 } from "@hydrophobefireman/ui-lib";
 
-import { EmojiSearch } from "./EmojiSearch";
-import { emojiRenderer } from "./emojiRenderer";
-import { clean, contains } from "../util/search";
-import keys from "@hydrophobefireman/j-utils/@build-modern/src/modules/Object/keys";
-import FakeSet from "@hydrophobefireman/j-utils/@build-modern/src/modules/es6/loose/Set/index";
-import { loadEmojis, supportsEmoji } from "../util/load_emoji";
+import {loadEmojis} from "../util/load_emoji";
+import {clean, contains} from "../util/search";
+import {EmojiSearch} from "./EmojiSearch";
+import {emojiRenderer} from "./emojiRenderer";
+
 const req = window.requestAnimationFrame || ((e) => setTimeout(e, 16));
 /**
  *
@@ -19,16 +19,15 @@ const req = window.requestAnimationFrame || ((e) => setTimeout(e, 16));
     emoji: string;
     searchBy: string;
     title:string;
-
 }>>}} param0
  */
-function Picker({ emojis }) {
+function Picker({emojis}) {
   const [search, setSearch] = useState("");
   const [category, setCategory] = useState("Smileys & Emotion");
   const cleanedSearch = clean(search);
   const handleButtonClick = useCallback(
     (e) => setCategory(e.target.dataset.emojicat),
-    []
+    [],
   );
 
   const unfilteredData = useMemo(() => emojis[category], [category]);
@@ -38,14 +37,13 @@ function Picker({ emojis }) {
     () =>
       setFiltered(
         unfilteredData.filter((x) =>
-          [x.emoji, x.searchBy].some((x) => contains(x, cleanedSearch))
-        )
+          [x.emoji, x.searchBy].some((x) => contains(x, cleanedSearch)),
+        ),
       ),
-    [cleanedSearch, unfilteredData]
+    [cleanedSearch, unfilteredData],
   );
 
   const asyncSearch = useCallback((e) => req(() => setSearch(e)));
-
   return (
     <div class="emoji-box">
       <section data-section="emoji-search" aria-label="emoji-search">
@@ -89,9 +87,9 @@ export default function () {
                 searchBy: clean(
                   Array.from(
                     new FakeSet(
-                      [].concat(curr.description.split(" "), curr.tags)
-                    )
-                  ).join("")
+                      [].concat(curr.description.split(" "), curr.tags),
+                    ),
+                  ).join(""),
                 ),
               });
               return emoji;

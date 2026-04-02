@@ -1,6 +1,6 @@
-import { useState, useCallback } from "@hydrophobefireman/ui-lib";
+import {useCallback, useState} from "@hydrophobefireman/ui-lib";
 
-export function EmojiSearch({ onInput }) {
+export function EmojiSearch({onInput}) {
   const [value, setValue] = useState("");
   const setInput = useCallback((e) => {
     const val = e.target.value;

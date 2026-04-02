@@ -1,9 +1,9 @@
 const hasCopy = navigator.clipboard ? 1 : 0;
 const copy = hasCopy
-  ? ({ target }) => {
+  ? ({target}) => {
       navigator.clipboard.writeText(target.textContent);
     }
-  : ({ target }) => {
+  : ({target}) => {
       const textArea = document.createElement("textarea");
       textArea.value = target.textContent;
       textArea.style.top = "0";
